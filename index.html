@@ -7,5 +7,49 @@
   </head>
   <body>
     <h1>Hello</h1>
+    <p>PS C:\Users\User\Desktop\FSD-1> git init
+      Initialized empty Git repository in C:/Users/User/Desktop/FSD-1/.git/
+      PS C:\Users\User\Desktop\FSD-1> git status
+      On branch master
+      
+      Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+      
+      nothing added to commit but untracked files present (use "git add" to track)
+      PS C:\Users\User\Desktop\FSD-1> git add .
+      PS C:\Users\User\Desktop\FSD-1> git commit -m 'I am Learning Git '
+      [master (root-commit) d47bcea] I am Learning Git
+       1 file changed, 11 insertions(+)
+       create mode 100644 index.html
+      PS C:\Users\User\Desktop\FSD-1> git push
+      fatal: No configured push destination.
+      Either specify the URL from the command-line or configure a remote repository using       
+          git remote add <name> <url>
+      
+      and then push using the remote name
+      
+          git push <name>
+      
+      PS C:\Users\User\Desktop\FSD-1> git remote add FSD1 https://github.com/abhishekkes/FSD1.git
+      PS C:\Users\User\Desktop\FSD-1> git push
+      To push the current branch and set the remote as upstream, use
+      
+          git push --set-upstream FSD1 master
+      
+      To have this happen automatically for branches without a tracking
+      upstream, see 'push.autoSetupRemote' in 'git help config'.
+      
+      PS C:\Users\User\Desktop\FSD-1> git push --set-upstream FSD1 master
+      Enumerating objects: 3, done.
+      Counting objects: 100% (3/3), done.
+      Delta compression using up to 4 threads
+      Compressing objects: 100% (2/2), done.
+      Writing objects: 100% (3/3), 362 bytes | 181.00 KiB/s, done.
+      Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+      To https://github.com/abhishekkes/FSD1.git
+       * [new branch]      master -> master
+      branch 'master' set up to track 'FSD1/master'.
+      PS C:\Users\User\Desktop\FSD-1> 
+          </p>
   </body>
 </html>
