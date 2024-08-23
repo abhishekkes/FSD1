@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://hotpot.ai/components/downloadOverlay -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="./jquery.min-56a981c8f3080b80f66fcf27c928c1670f0434681478a3fdf46606110390da81.js.download"></script>
+<script src="./application-5efd6ee9fd64803bc2fb2878dfe8afcce9d78cd2956ae1a6a4b0e20b655e04a5.js.download"></script>
+
+<link rel="stylesheet" media="screen" href="./reset-05c44cf8428909649f0fc1436c3efe551a61163501a75f8f0103b768b3cd2596.css">
+<link rel="stylesheet" media="screen" href="./scaffold-e2db533b6a07d648f846ee22f316a6452ae94b3176a984015442d98730d944b6.css">
+
+<link href="./css2" rel="stylesheet">
+
+<meta name="robots" content="noindex">
+</head>
+<body>
+<style>
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// Body
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+html, body {
+	background: rgba(0, 0, 0, 0);
+}
+
+
+body.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// RootOverlay
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+#rootOverlay {
+	background: transparent;
+	height: 100vh;
+	z-index: 0;
+}
+
+
+#rootOverlay.dark {
+	background: rgba(0, 0, 0, 0.6);
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// RootBox
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+#rootBox {
+	position: fixed;
+	top: 60px;
+	left: 10px;
+	display: flex;
+	justify-content: center;
+   box-sizing: border-box;
+   max-height: 95vh;
+	padding: 30px;
+	background: #FCFCFC;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(8, 8, 8, 0.28);
+	overflow: auto;
+	z-index: 8;
+}
+
+
+#rootBox.centered {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// General
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+h2 {
+	padding: 0;
+   margin: 0 0 8px;
+	font-family: Roboto;
+   font-size: 15px;
+   font-weight: normal;
+}
+
+
+a {
+	color: #6DADE0;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+</style>
+<div id="rootOverlay" class="overlay"></div>
+<div id="rootBox">
+<style>
+
+
+#rootBox {
+	width: auto;
+	padding: 40px;
+}
+
+
+#downloadBox h2 {
+	margin-bottom: 15px;
+	font-size: 1.5em;
+}
+
+
+#controlBox {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+}
+
+
+#controlBox .optionBox {
+	width: 350px;
+}
+
+
+#controlBox .optionBox:first-child {
+	border-right: 2px solid lightgray;
+}
+
+
+#downloadBox .overview p {
+	font-size: 16px;
+}
+
+
+#downloadBox .button {
+	width: 250px;
+	margin: 30px auto 10px;
+	line-height: 1em;
+}
+
+
+#downloadBox .button.link {
+	background-color: #332B47;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// Mobile
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+@media screen and (max-width : 900px) {
+	#rootBox {
+		width: 95%;
+		max-width: 550px;
+	}
+
+	#controlBox {
+		grid-template-columns: 1fr;
+	}
+
+	#controlBox .optionBox:first-child {
+		border-right: 0;
+	}
+}
+
+
+@media screen and (max-width : 600px) {
+	#downloadBox {
+		width: 70vw;
+	}
+
+	#controlBox .optionBox {
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width : 400px) {
+	#rootBox {
+		padding: 40px 20px;
+	}
+}
+
+
+</style>
+<div id="downloadBox">
+<div id="controlBox">
+<div class="optionBox">
+<h2> Commercial Use </h2>
+<div class="overview">
+<p><a href="https://hotpot.ai/components/downloadOverlay#" class="link license">Buy license</a> or <a href="https://hotpot.ai/components/downloadOverlay#" class="link credits">use credits</a>.</p>
+<p>See <a href="https://hotpot.ai/sell" target="_blank">copyright disclaimer</a>.</p>
+</div>
+<div class="button submit" alt="Download (Cmd + Return)">Commercial Download</div>
+</div>
+<div class="optionBox">
+<h2> Non-commercial Use </h2>
+<div class="overview">
+<p> Attribute Hotpot. </p>
+<p> <a href="https://hotpot.ai/attribution" target="_blank">See details</a>. </p>
+</div>
+<div class="button submit" alt="Download (Cmd + Return)">Non-commercial Download</div>
+</div>
+</div>
+</div>
+<script>
+
+// ================================================================================
+// Globals
+// ================================================================================
+let FireEvents = true;
+let LogCategoryName = 'Download Overlay';
+
+let DownloadUrl = null;
+let Filename = 'Hotpot.png';
+let Price = 850;
+let OrderDescription = 'Hotpot.ai image';
+
+
+// ================================================================================
+// Inter-Frame Functions
+// ================================================================================
+// TODO: set @LogId from caller.
+function configure(settings) {
+	DownloadUrl = settings.downloadUrl;
+	Filename = settings.filename;
+	Price = settings.price
+	OrderDescription = settings.orderDescription;
+}
+
+
+function download() {
+	downloadImageFile(Filename, DownloadUrl);
+}
+
+
+function initControlBox() {
+	ControlBox.find('.button.submit').on('click', function() {
+		didClickDownloadButton($(this));
+	});
+
+	ControlBox.find('.link.license').on('click', function() {
+		didClickLicenseButton($(this));
+	});
+
+	ControlBox.find('.link.credits').on('click', function() {
+		didClickCreditsButton($(this));
+	});
+}
+
+
+// ================================================================================
+// Button Functions
+// ================================================================================
+function didClickCreditsButton(buttonElement) {
+	getCheckoutClass().showCreditModal();
+}
+
+
+function didClickLicenseButton(buttonElement) {
+   // Show checkout modal.
+   getCheckoutClass().showPaymentModal(Price, OrderDescription, function(orderData) {
+      getCheckoutClass().hideModal();
+   });
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'License button clicked: direct');
+}
+
+
+function didClickDownloadButton(buttonElement) {
+	downloadImageFile(Filename, DownloadUrl);
+
+	logEvent(LogCategoryName,
+				`Download started`);
+}
+
+
+
+// TODO: fix this hackenstein!!! Shouldn't need this!
+function getCheckoutClass() {
+	return window.top.CheckoutClass || window.CheckoutClass;
+}
+
+
+// ================================================================================
+// Keyboard Event Functions
+// ================================================================================
+function initKeyboardEvents() {
+   $(document).keydown(function(event) {
+	   // Esc pressed?
+	   if (event.keyCode === 27) {
+			OverlayClass.hideOverlay();
+
+	   // Ctrl+Return or Cmd+Return pressed? Submit.
+	   } else if (didPressMetaKey1(event) && event.keyCode === 13) {
+	      event.preventDefault();
+	      didClickDownloadButton();
+
+ 		// Propagate to parent? Let parent process keys we don't.
+	   } else if (parent && parent.previewBoxDidKeyboardEvent) {
+			parent.previewBoxDidKeyboardEvent(event);
+
+      }
+   });
+}
+
+
+// ================================================================================
+// Global Functions
+// ================================================================================
+function initGlobals() {
+	ControlBox = $('#controlBox');
+}
+
+
+// ================================================================================
+// Document Ready Event Handler
+// ================================================================================
+$(document).ready(function() {
+	// Init globals.
+	initGlobals();
+
+	initControlBox();
+
+	initKeyboardEvents();
+
+	// Print status.
+	debug('Download overlay document ready end');
+});
+
+</script>
+</div>
+<script>
+
+
+// ================================================================================
+// OverlayClass
+// ================================================================================
+let OverlayClass = (function() {
+   "use strict";
+
+
+   // ================================================================================
+   // Constants
+   // ================================================================================
+   const DefaultShowDur = 200;
+   const DefaultHideDur = 200;
+   const DefaultXOffset = 10;
+   const DefaultYOffset = 10;
+
+   // ================================================================================
+   // Global Variables
+   // ================================================================================
+
+
+   // ================================================================================
+   // Functions
+   // ================================================================================
+	function init() {
+		$('#rootOverlay').on('click', function() {
+			hideOverlay(0);
+		});
+	}
+
+
+	function positionContent(anchorXParam, anchorYParam, anchorWidthParam, anchorHeightParam) {
+		// Set anchor points, ensure they are valid numbers.
+		let anchorX = anchorXParam ? anchorXParam : 0;
+		let anchorY = anchorYParam ? anchorYParam : 0;
+		let anchorWidth = anchorWidthParam ? anchorWidthParam : 0;
+		let anchorHeight = anchorHeightParam ? anchorHeightParam : 0;
+
+		// Default content position to be below anchor point.
+		let newX = anchorX + DefaultXOffset;
+		let newY = anchorY + anchorHeight + DefaultYOffset;
+
+		// Set default max-height value.
+		let maxHeight = 'none';
+
+		// Set content box.
+		let contentBox = $('#rootBox');
+
+      // Set window and content values.
+      let contentHeight = contentBox.outerHeight();
+      let windowWidth = $(window).width();
+      let windowHeight = $(window).height();
+
+		// If insufficient space below, can we place content above anchor point?
+		if (newY + contentHeight > windowHeight) {
+			// Update <newY>.
+ 			newY = anchorY - DefaultYOffset - contentHeight;
+
+ 			// Insufficient space above anchor point? Position content near window top.
+ 			if (newY < DefaultYOffset || (newY + contentHeight > windowHeight)) {
+ 				// Set <newY>.
+ 				newY = DefaultYOffset;
+
+ 				// Update <maxHeight>.
+ 				maxHeight = windowHeight - 2*DefaultYOffset;
+ 			}
+ 		}
+
+ 		// Set content properties.
+ 		contentBox.offset({left: newX, top: newY});
+ 		contentBox.css('max-height', maxHeight + 'px');
+	}
+
+
+	function showOverlayBySettings() {
+		showOverlay();
+
+	 	let maxWidth = $(window).width() - 2*DefaultXOffset;
+	 	let maxHeight = $(window).height() - 2*DefaultYOffset;
+
+		let contentBox = $('#rootBox');
+		contentBox.css('position', 'static');
+		contentBox.css('max-height', maxHeight + 'px');
+		contentBox.css('max-width', maxWidth + 'px');
+
+		//if (contentBox.outerWidth() > $(window).width() ||
+		//	contentBox.outerHeight() > $(window).height()) {
+			contentBox.css('overflow', 'auto');
+		//}
+
+		$('body').addClass('center');
+		$('#rootOverlay').addClass('dark');
+	}
+
+
+	function showOverlay() {
+		// Get iframe element holding overlay.
+		let iframeElement = $(window.frameElement);
+
+		// Set duration.
+		let dur = DefaultShowDur;
+
+		// Show overlay.
+		iframeElement.fadeIn(dur);
+
+		// Given content focus.
+		$('#rootBox').focus();
+	}
+
+
+	function hideOverlay(durParam) {
+		// Get iframe element holding overlay.
+		const iframeElement = $(window.frameElement);
+
+		// Set duration.
+		const dur = isDefined(durParam) ? durParam : DefaultHideDur;
+
+		// Notify iframe of close event.
+		const contentWindow = iframeElement[0].contentWindow;
+		if (contentWindow && contentWindow.overlayClassWillCloseOverlay) {
+			contentWindow.overlayClassWillCloseOverlay();
+		}
+
+		// Show overlay.
+		iframeElement.fadeOut(dur);
+	}
+
+
+	function configure(settings) {
+		if (settings.background) {
+			$('#rootOverlay').css('background', settings.background);
+		}
+	}
+
+
+   // ================================================================================
+   // API
+   // ================================================================================
+   return {
+      init: init,
+      configure: configure,
+      hideOverlay: hideOverlay,
+      showOverlay: showOverlay,
+      showOverlayBySettings: showOverlayBySettings,
+      positionContent: positionContent
+   };
+})();
+
+
+// ================================================================================
+// Component Layout Ready Event Handler
+// ================================================================================
+$(document).ready(function() {
+	OverlayClass.init();
+});
+
+
+function positionContent(anchorX, anchorY, anchorWidth, anchorHeight) {
+	OverlayClass.positionContent(anchorX, anchorY, anchorWidth, anchorHeight);
+}
+
+
+function hideOverlay(dur) {
+	OverlayClass.hideOverlay(dur);
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlay() {
+	OverlayClass.showOverlay();
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayBySettings(settings) {
+	OverlayClass.showOverlayBySettings(settings);
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayFull(settings) {
+	OverlayClass.showOverlay();
+	OverlayClass.configure(settings);
+}
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayBySettingsNEW(settings) {
+	// Show overlay.
+	OverlayClass.showOverlay();
+	OverlayClass.configure(settings);
+
+	// Set content box.
+	let contentBox = $('#rootBox');
+
+	const isCentered = isDefined(settings.centered) && settings.centered;
+	contentBox.toggleClass('centered', isCentered);
+
+
+
+	// TODO: Fix this hacky stuff. Please. It's so embarrassing. Why is it required???
+	// Reset width value.
+	if (settings.width) {
+		contentBox.css('width', settings.width);
+	} else {
+		//contentBox.css('width', 'auto');
+	}
+
+	if (settings.maxWidth) {
+		contentBox.css('max-width', settings.maxWidth);
+	}
+
+
+
+	if (settings.centered) {
+		let overflowCSS = contentBox.prop('scrollHeight') > contentBox.height() ? 'auto' : 'visible';
+		contentBox.css('overflow', overflowCSS);
+
+		if (settings.widthPercentage) {
+			contentBox.css('width', settings.widthPercentage + '%');
+		}
+
+	} else {
+		OverlayClass.positionContent(settings.anchorX, settings.anchorY, settings.anchorWidth, settings.anchorHeight);
+	}
+}
+
+
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8b79d7021c79a781',t:'MTcyNDQwMjg2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource(2).html"></iframe>
+
+</body></html>

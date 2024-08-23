@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<meta charset="utf-8">
+<title>AI Art Generator - AI Image Generator API</title>
+<link rel="stylesheet" media="screen" href="ak.css" />
+<link rel="stylesheet" media="screen" href="dk.css" />
+
+
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" type="image/png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hotpot.ai">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="canonical" href="https://hotpot.ai/art-generator">
+
+
+
+
+</head>
+<body>
+<div id="rootHeader">
+<div class="headerBody">
+<a href="/" class="logo">
+<img class="brandmark" src="/images/logos/brandmark.svg" alt="Hotpot.ai brandmark">
+<img class="wordmark" src="/images/logos/wordmark.svg" alt="Hotpot.ai wordmark">
+</a>
+<div id="siteMenu">
+<div class="overlay" style="display:none">
+<div class="closeBox"></div>
+</div>
+<div class="categoryList">
+<div class="category root">
+<div class="header">
+<div class="label">AI Image</div>
+<div class="icon"></div>
+</div>
+<div class="content" style="display:none">
+<div class="overview">
+Spark creativity with AI
+</div>
+<div class="itemList">
+<a href="/art-generator" class="item">Art Generator</a>
+<a href="/ai-editor" class="item">Art Generator - Power Editor</a>
+<a href="/ai-character" class="item">AI Characters</a>
+<a href="/logo-generator" class="item">AI Logos</a>
+<a href="/ai-stock-photo" class="item">AI Stock Photos</a>
+<a href="/background-generator" class="item">AI Backgrounds</a>
+<a href="/anime-generator" class="item">AI Anime</a>
+</div>
+</div>
+</div>
+<div class="category root" href="/game-tools">
+<div class="header">
+<div class="label">AI Headshot</div>
+<div class="icon"></div>
+</div>
+<div class="content" style="display:none">
+<div class="overview">
+Reimagine yourself with AI
+</div>
+<div class="itemList">
+<a href="/ai-headshots" class="item">General Headshot</a>
+<a href="/ai-corporate-headshot" class="item">Corporate Headshot</a>
+<a href="/lunar-new-year-headshot" class="item">Lunar New Year Headshot</a>
+<a href="/ai-avatar" class="item">Avatar</a>
+<a href="/ai-cosplay" class="item">Cosplay Headshot</a>
+<a href="/real-estate-headshot" class="item">Real Estate Headshot</a>
+<a href="/medical-headshot" class="item">Medical Headshot</a>
+<a href="/xmas-headshot" class="item">Xmas Headshot</a>
+<a href="/profile-picture-editor" class="item">Profile Picture Editor</a>
+</div>
+</div>
+</div>
+<div class="category root">
+<div class="header">
+<div class="label">AI Editing</div>
+<div class="icon"></div>
+</div>
+<div class="content" style="display:none">
+<div class="overview">
+Edit photos with AI
+</div>
+<div class="itemList">
+<a href="/upscale-photo" class="item">Photo Upscaler</a>
+<a href="/remove-object" class="item">Object Remover</a>
+<a href="/remove-background" class="item">Background Remover</a>
+<a href="/personalize-art" class="item">Photo Restyler</a>
+<a href="/colorize-picture" class="item">Photo Colorizer</a>
+<a href="/restore-picture" class="item">Photo Restorer</a>
+<a href="/enhance-face" class="item">Face Enhancer</a>
+<a href="/crop-photo" class="item">Auto Crop</a>
+<a href="/color-generator" class="item">Color Generator</a>
+</div>
+</div>
+</div>
+<div class="category root" href="/game-tools">
+<div class="header">
+<div class="label">AI Game</div>
+<div class="icon"></div>
+</div>
+<div class="content" style="display:none">
+<div class="overview">
+Create game content with AI
+</div>
+<div class="itemList">
+<a href="/game-tools" class="item">AI Game Tools</a>
+<a href="/background-generator" class="item">AI Game Background</a>
+<a href="/sparkwriter" class="item">AI Game Copywriter</a>
+<a href="/logo-generator" class="item">AI Game Logo</a>
+<a href="/ai-character" class="item">AI Characters</a>
+<a href="/dnd-generator" class="item">AI DnD Generator</a>
+</div>
+</div>
+</div>
+<div class="category root">
+<div class="header">
+<div class="label">AI Writing</div>
+<div class="icon"></div>
+</div>
+<div class="content" style="display:none">
+<div class="overview">
+Elevate writing with AI
+</div>
+<div class="itemList">
+<a href="/sparkwriter" class="item">Content Brainstorming</a>
+<a href="/sparkwriter" class="item">Art & NFT Idea</a>
+<a href="/sparkwriter" class="item">Copywriting</a>
+<a href="/sparkwriter" class="item">Song Writing</a>
+<a href="/sparkwriter" class="item">Book Writing</a>
+<a href="/sparkwriter" class="item">Professional Writing</a>
+<a href="/sparkwriter" class="item">Product Writing</a>
+</div>
+</div>
+</div>
+</div>
+<div class="linkBox">
+<a href="/account" class="link icon desktop account"></a>
+<a href="#" class="link icon button help drift"></a>
+</div>
+</div>
+<div id="siteMenuButton"></div>
+</div>
+</div>
+<div id="rootBody">
+<div id="rootYield">
+<style>
+
+#pageBox {
+	margin-bottom: 150px;
+}
+
+#teaserBox img {
+	width: 350px;
+}
+
+.button {
+	width: 200px;
+}
+
+.button.buy {
+    margin-top: 15px;
+}
+
+#faq {
+	margin-bottom: 0;
+}
+
+</style>
+<div id="pageBox">
+<div id="headerBox">
+<h1> AI Art Generator </h1>
+<div id="overviewBox">
+<div id="teaserBox">
+<img src="/images/site/ai/image_generator/art_maker/teaser_400.jpg" alt="AI image generator brings imagination to life, producing stunning art, illustrations, and photos in seconds. Our text-to-image technology builds on the latest Stable Diffusion models and proprietary enhancements.">
+<div class="textBox">
+<p>
+Our AI image generator brings imagination to life, producing stunning art, illustrations, and photos in seconds. Unleash creativity and express yourself in new ways with the power of AI. Explore endless possibilities, from crafting unique marketing materials to creating beautiful artwork, all with supreme ease and efficiency.
+</p>
+<p>
+Explore the world's imagination with <a href="/gallery/8/ai-art-maker" target="_blank">AI Art Gallery</a>.</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tryNowBox">
+<a href="/ai-image-generator/create" class="button">Create Now</a>
+<div class="copy">No login required</div>
+</div>
+<article class="internalAdBox">
+<h2>AI Corporate Headshots</h2>
+<h3>Elevate your LinkedIn photo, company website, and professional profile with <a href="/ai-corporate-headshot">AI Corporate Headshots</a>.</h3>
+<div class="tryBox">
+<div> Easy refunds. Happiness guaranteed. </div>
+<a class="button try" href="/ai-corporate-headshot">Try Now</a>
+</div>
+<a class="link group" href="/ai-corporate-headshot">
+<div class="imageList">
+<img src="/images
+/style_gallery/12.webp" alt="AI corporate headshot" loading="lazy">
+<img src="/images
+/style_gallery/29.webp" alt="AI professional headshot" loading="lazy">
+<img src="/images
+/style_gallery/27.webp" alt="AI LinkedIn photo" loading="lazy">
+<img src="/images
+/style_gallery/39.webp" alt="AI executive picture" loading="lazy">
+<img src="/images
+/style_gallery/1.webp" alt="AI corporate headshot" loading="lazy">
+<img src="/images
+/style_gallery/13.webp" alt="AI professional headshot" loading="lazy">
+<img src="/images
+/style_gallery/26.webp" alt="AI LinkedIn photo" loading="lazy">
+<img src="/images
+/style_gallery/41.webp" alt="AI executive picture" loading="lazy">
+<img src="/images
+/style_gallery/15.webp" alt="AI corporate headshot" loading="lazy">
+</div>
+</a>
+</article>
+<article class="internalAdBox">
+<h2>AI Avatars</h2>
+<h3>Cast yourself as a valiant superhero, magical princess, space warrior, or other incredible digital characters with <a href="/ai-avatar">AI Avatars</a>.</h3>
+<div class="tryBox">
+<div> Easy refunds. Happiness guaranteed. </div>
+<a class="button try" href="/ai-avatar">Try Now</a>
+</div>
+<a class="link group" href="/ai-avatar">
+<div class="imageList">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/6.jpg" alt="AI space warrior avatar" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/24.jpg" alt="AI Joker avatar" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/30.jpg" alt="AI superhero avatar" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/38.jpg" alt="AI art persona" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/8.jpg" alt="AI princess solider" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/9.jpg" alt="AI magical character" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/14.jpg" alt="AI cartoon avatar" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/16.jpg" alt="AI pilot avatar" loading="lazy">
+<img src="/images/site/ai/photoshoot/avatar/style_gallery/20.jpg" alt="AI fantasy fighter avatar" loading="lazy">
+</div>
+</a>
+</article>
+<article class="internalAdBox">
+<h2>See What Others Are Making</h2>
+<h3>From the wacky to the beautiful, see what other Hotpot users are making.</h3>
+<div class="tryBox">
+<a class="button try" href="/gallery/8/ai-art-maker">See Now</a>
+</div>
+<div id="artMakerAdBox" class="internalAdGalleryBox">
+<a class="imageList" href="/gallery/8/ai-art-maker">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/photo_general_1.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/photo_cinematic_2.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/charcoal_1.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/3d_general_2.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/photo_fashion_1.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/animation_2.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/cyberpunk_2.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/hotpot_art_10.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/doom_1.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/illustration_art_2.jpg" loading="lazy">
+<img src="/images/site/ai/image_generator/art_maker/style_catalog/hotpot_art_11.jpg" loading="lazy">
+</a>
+</div>
+</article>
+<article>
+<h2>AI Image Generator API</h2>
+<p>
+Use the Hotpot <a href="/docs/api" target="_blank">AI Image Generator API</a> or Hotpot <a href="/stable-diffusion-api" target="_blank">Stable Diffusion API</a> to add an AI image generation to your workflow, website, or app.
+</p>
+</article>
+<article>
+<h2>Tips & Custom Styles</h2>
+<p>
+To use your own styles:
+</p>
+<ol>
+<li>Pick "Custom" in the style menu.</li>
+<li>
+Give specific instructions. For instance, "Oil painting of water lilies with vibrant brushstrokes using a happy color palette" is better than "lily flowers". See below for more examples.
+</li>
+<li>Read the Limitations section below, and contact us for more help.</li>
+</ol>
+<p>
+Examples:
+</p>
+<ul>
+<li> Oil painting of water lilies with vibrant brushstrokes using a happy color palette </li>
+<li> An underwater explosion with vibrant colors </li>
+<li> Happy raindrops in the style of Vincent Van Gogh's painting, Starry Night </li>
+</ul>
+<br/>
+<p>
+See our <a href="/blog/ai-art-and-image-generator-guide" target="_blank">AI Art & Image Generator Guide</a> for more information about different AI image generation techniques.
+</p>
+</article>
+<article>
+<h2>Limitations</h2>
+<p>
+AI is amazing but flawed. Among the limitations are an inability to count and follow instructions. If you request two purple Martians, Hotpot may include yellow hues and five aliens. Yes, we tried grounding him and taking away his screen time, but a rebel once is a rebel always.
+</p>
+<p>
+We're working hard to improve. Your patience is appreciated.
+</p>
+<p>
+We release improvements weekly. <a href="https://twitter.com/hotpothelper" target="_blank">Follow us</a> on Twitter for updates.
+</p>
+</article>
+<article>
+<h2>Prices</h2>
+<p>
+Buy credits for commercial use, better images, faster results, privacy, and no ads.
+</p>
+<p>
+Click below to view prices, plus details on commercial use and intellectual property considerations.
+</p>
+<p>
+We may use invisible watermarks to identify Hotpot creations for legal disputes.
+</p>
+<a href="/buy" class="button buy">See Prices</a>
+</article>
+<article id="faq">
+<h2>FAQ</h2>
+<ul class="faq">
+<li id="sell">
+<p class="question">Can I use Hotpot commercially?</p>
+<p class="answer">
+Yes, but please <a href="/sell" target="_blank">see details</a> about commercial use and intellectual property considerations.
+</p>
+</li>
+<li>
+<p class="question">What are the terms and restrictions?</p>
+<p class="answer">
+In short, do no harm.
+</p>
+<p class="answer">
+Don't use AI to hurt others, incite violence, or break the law.
+</p>
+<p class="answer">
+This product operates under the <a href="/terms/licenses" target="_blank">RAIL-M</a> license.
+</p>
+<p class="answer">
+Users must comply with our <a href="/terms" target="_blank">terms</a> and observe <a href="/terms#responsibleUsage" target="_blank">responsible usage</a>. Violators are subject to account termination and ineligible for refunds.
+</p>
+<p class="answer">
+General technology offers the potential for advancement and abuse. History is resoundingly clear: from the printing press to smartphones, limiting general technology only limits humanity's potential. Society must solve human problems at the human layer, not the technology layer.
+</p>
+<p class="answer">
+Please use AI responsibly.
+</p>
+</li>
+<li id="faq-art">
+<p class="question">Are AI images considered art?</p>
+<p class="answer">
+Art is not defined by means of production. This is why handcrafted paintings from 1st graders are not considered art while professional illustrations made with Adobe software are. In our <a href="https://twitter.com/panabee/status/1377646728413782023" target="_blank">founder's opinion</a>, normal art is an opinion that stirs the soul while elevated art stirs the mind.
+</p>
+<p class="answer">
+What matters is the opinion, not the means.
+</p>
+<p class="answer">
+Imagine you hired an art student and dictate every stroke, color, and detail of a painting. Make this angle sharper. Make that line thicker. Add purple. The student robotically executes the commands. Who is the artist: you or the student?
+</p>
+<p class="answer">
+AI cannot offer this degree of precision today, but it can spark creativity and spawn compelling ideas for refinement, much as a junior employee generates suggestions for an experienced supervisor.
+</p>
+<p class="answer">
+Perhaps raw output from AI may not qualify as art -- someone please consult the spirit of Supreme Court Justice Potter Stewart -- but there is no reason why the collaborative output between you and AI cannot.
+</p>
+<p class="answer">
+In fact, AI images as an ambassador of art arguably transcends "traditional art" that is viscerally resonant but cerebrally unstimulating. The advent of AI art has stirred minds across the globe and prompted millions to ponder one of the most profound questions posed by man: What is art?
+</p>
+</li>
+<li>
+<p class="question">Do AI images debase art?</p>
+<p class="answer">
+It's tempting to say yes, but consider the clothes you're wearing and those worn by 99% of the population.
+</p>
+<p class="answer">
+Off-the-rack clothes cannot compete with handcrafted ones and do not undermine the craftmanship of tailors. If anything, they increase appreciation and demand for garments fashioned by a human instead of a machine.
+</p>
+<p class="answer">
+Like with apparel, AI cannot match the creativity and excellence of artisans. Trained eyes can readily spot defects with AI images, but these imperfections are worthy tradeoffs or even unimportant to normal consumers, even if cringeworthy to experts.
+</p>
+<p class="answer">
+It is a mistake to lump AI images with human images the same way it is to lump machine clothes with human clothes. AI images serve a different purpose. They are meant to let the masses express imagination and emotions in an affordable way, similar to how machine clothes let the masses dress and express themselves in an affordable way.
+</p>
+</li>
+<li id="faq-intelligence">
+<p class="question"> Fine. But is this AI intelligent? </p>
+<p class="answer">
+As our founder <a href="https://twitter.com/panabee/status/1512279373088378883" target="_blank">asserts</a>, debates about intelligence are semantic quicksand because the concept is undefinable. (Try to define intelligence algorithmically.)
+</p>
+<p>
+These futile discussions distract from the two most critical questions: (1) can humans benefit from AI? (2) can humans control AI?
+</p>
+<p class="answer">
+Intelligence is uncorrelated with impact. Viruses are not alive (well ...), let alone intelligent, yet even the Devil envies how these pathogens devastate countries and polarize society. Farm tractors are incredibly dumb, but they enabled humanity to avert <a href="/hotpotcha" target="_blank">Malthusian predictions</a> of doom and feed billions of people. (Malthus must have been super fun. Friend: "Thomas, good morning!" Thomas: "Bad, morning, bad! May be our last. Bah!" Wife: "Boobear, fancy a walk? The moon is ever so brilliantly romantic tonight." Thomas: "Bah, madam, bah. I must conserve calories for the Great Famine." Wife: "Boobear, the winter air is frightfully cold. Hold me. Keep me warm." Thomas: "Bah. Shivering makes you strong.")
+</p>
+<p class="answer">
+Please don't get sucked into the hysteria over AI sentience. The Google model is no more sentient than the Magic 8 ball (which is awesome and predicted you would read this). Shockingly, in the age of clickbait articles and outrage artists, shallow attempts to grab the spotlight . . . grabbed the spotlight with scary, but patently false, claims.
+</p>
+</li>
+<li>
+<p class="question">Do AI models learn like humans?</p>
+<p class="answer">
+Yes and no.
+</p>
+<p class="answer">
+Consider how humans learn at a conceptual level. We listen to a teacher. Rather than memorize each word from a lecture, we take notes and extract core principles. AI models are the same. They do not copy images or text. They "take notes" by statistically analyzing data for key patterns or ideas. These essential ideas are what get stored, not original content. Like human students, some AI models learn better than others: good AI models excel at identifying and applying core concepts better than poor models.
+</p>
+<p class="answer">
+However, it's critical to note that we still do not understand the precise mechanism by which human brains "learn." Our minds are still black boxes in terms of how learning occurs, even if we can map the physical pieces and describe the biochemical pathways. AI models similarly present as black boxes. We can draw detailed and accurate diagrams of AI models, but cannot explain how specific results happen. In this regard, we cannot yet state if AI models and humans learn the same way, simply because we lack information on either side of the equation.
+</p>
+<p class="answer">
+The simplest proof that machines are much more than memorization is how AI models can produces images and artwork never seen before.
+</p>
+</li>
+<li>
+<p class="question">How should we regulate AI?</p>
+<p>
+Like any powerful technology, AI can both empower and harm.
+</p>
+<p>
+If you're struggling to reconcile the risk-reward tradeoff, how would you regulate the printing press?
+</p>
+<p>
+The Communist Manifesto and Mein Kampf engendered the death and destitution of millions, setting back humanity by decades.
+</p>
+</li>
+<li>
+<p class="question">Will AI replace humans?</p>
+<p class="answer">
+If you believe this, please use Siri. (No, Siri, no! I said check the Warriors score. I did NOT say call Pizza Hut.)
+</p>
+<p class="answer">
+On a serious note, we see AI more as "augmented intelligence" than "artificial intelligence" -- technology that augments people. Someday, researchers may invent general intelligence and displace humans, but that day is neither today nor tomorow.
+</p>
+<p class="answer">
+Until then, AI can empower individuals by sparking creativity and automating drudgery. Those who dismiss machine learning overlook how much repetition mars the creative process and normal jobs, including art and programming.
+</p>
+<p class="answer">
+Analyze your work activities. How many of them are boring? If your company hired a junior person to perform those tasks, even 30% of them, freeing you to focus on more meaningful tasks, would you want this? Welcome to AI's dazzling promise.
+</p>
+<p class="answer">
+Even if general intelligence never materializes, AI dangles the prospect of automating tasks for knowledge workers in the same way machines automated tasks for farm workers. These machines were not intelligent and did not eliminate farmers, but they did augment abilities and unlock historic levels of societal gains. Without technology, it would be impossible to feed the 8 billion people alive today and somewhere in outrage heaven, Thomas Malthus would be shoving his finger in everyone's face exclaiming, "I told you! I told you! I totally tooooooooooooooooold you!"
+</p>
+<p class="answer">
+Frankly, this scenario of augmented intelligence feels more feasible and appealing. A world where AI functions independently of humans could usher in an era of unthinkable risk. But a world in which AI maximizes the potential of each and every person could unleash unprecedented levels of joy, health, and prosperity.
+</p>
+</li>
+<li>
+<p class="question">Is Web3 useful technology or a massive scam?</p>
+<p class="answer">
+TBD. Longer answer <a href="https://twitter.com/panabee/status/1550973256135573506" target="_blank">here</a>.
+</p>
+</li>
+<li>
+<p class="question">What's surprising about AI?</p>
+<p class="answer">
+That machines are ironically better at creativity than logic, at least in 2023. And of course, that humans are the ones vulnerable to binary thought while machines can fluidly think in analog.
+</p>
+</li>
+<li id="controversy">
+<p class="question">Why are AI Art Generators controversial?</p>
+<p class="answer">
+<a href="/blog/ai-art-and-image-generator-guide" target="_blank">AI Art Generators</a> are controversial due to forces familiar to any historian: disruptive tech threatens jobs, which naturally incites resentment and fear.
+</p>
+<p class="answer">
+From daguerreotype cameras to Photoshop to smartphone cameras, technology changes society in profound ways. Joseph Schumpeter describes this as "creative destruction," but it is more accurately considered "destructive creation." Ultimately, disruptive technology like an AI Art Generator births a healthier, more prosperous society by elevating living standards and increasing skill equality via the power of automation. In doing so, some people feel threatened and lash out in fear. This cycle repeats itself endlessly.
+</p>
+<p class="answer">
+Public training of artists has led to progress for millennia. Each generation of art learns and draws inspiration from preceding ones. Think artists who learn to create by studying private buildings, favorite cartoons, popular characters, and other sources of art knowledge. Public training of machines has occurred for decades, and modern marvels like the iPhone or Google would be severely handicapped without such knowledge sharing, or perhaps not even feasible.
+</p>
+<p class="answer">
+Ultimately, society lurches forward -- clumsily and jarringly, but forward -- with the development and proliferation of disruptive technology. Imagine progress as a river that starts narrow and widens, where currents sweep up skills and amenities available only to the elite at the narrow mouth, and magically carry them to everyone along the riverbank. Decades ago, only the elite could write, read, and drink clean water. Years ago, only the wealthy could afford smartphones and computers. Technology cured these crippling inequalities, each time transforming elite lifestyles into normal ones. Art is an incredible skill and requires immense talent, but the ability to draw is only available to a precious few. Expression is a core human value. AI promises to bring expression to all.
+</p>
+</li>
+<li>
+<p class="question">Is it bad that AI chatbots hallucinate and spread misinformation?</p>
+<p class="answer">
+Absolutely. Fabricating facts (fancy language for lying) is a significant concern and will get addressed. There are multiple approaches underway to combat AI hallucinations (artsy language for lying). We expect this to be mostly solved in the imminent future.
+</p>
+<p class="answer">
+While valid in theory, these criticisms are misguided and often reek of outrage opportunism. AI is a raw, emerging technology. No one is content with the current state. Major labs are committed to fixing flaws and eliminating obvious risks like hallucinations.
+</p>
+<p class="answer">
+Hallucinating humans, on the other hand, present a far greater threat to society. To wit: Bob fakes expertise, speaking confidently on topics outside his experience. Bob's knowledge is limited to 2021 or before. Is Bob a media personality ... or an AI chatbot?
+</p>
+<p class="answer">
+Let's demand more of AI, and also of humans -- especially those on social media and TV who subsist on outrage.
+</p>
+</li>
+<li>
+<p class="question">Burger or fries first?</p>
+<p class="answer">
+Fries, always fries. Duh.
+</p>
+<p class="answer">
+If you wondered, "Why is this FAQ suddenly discussing fries," dear reader, you lose. You have been outed as non-human, likely an AI robot sent from the future (or maybe a Magic 8 ball in human form). Expect the FBI to come knocking any moment.
+</p>
+<p class="answer">
+This question by the distinguished German professor, Albee Esse, is regarded as the quintessential method for testing if someone is human or non-human: people instinctively scream "Fries!" then go eat some, which leads to guilty moments in the gym, which spawns fantasies about fries, renewing the endless cycle. Illogical behavior defines the human species.
+</p>
+<p class="answer">
+Read the research yourself: <a href="/hotpotcha" target="_blank">the conclusions</a> are shocking and almost impossible to believe.
+</p>
+</li>
+<li>
+<p class="question">French fries or ice cream? You can only pick one.</p>
+<p class="answer">
+Do not ask mere mortals to do the impossible. This can break people. Aligning ambition and ability is one of the keys to happiness, and this is beyond our ability.
+</p>
+<p class="answer">
+Unknown historical fact: the inspiration for Rodin's famous "Thinker" sculpture was to capture the angst in pondering this question. This question is highly dangerous and may rupture souls if handled indelicately. Do not attempt to answer unless you're a licensed professional.
+</p>
+</li>
+<li>
+<p class="question">Fan or foe of skinny jeans?</p>
+<p class="answer">
+Foe. Big time. Like Superman vs. Lex Luthor. Mortal enemies.
+</p>
+<p class="answer">
+We loathe skinny jeans for two reasons: (1) we can't put them on; and (2) we can't take them off. Our thick thighs and big buttocks get in the way. After 10 minutes of struggling and straining, we might have them down to our thighs, then our knees 10 minutes later and finally off after 30 minutes, at which point, we are so frustrated that we have probably yanked off our socks and underwear, too. The only upside is that the process burns 500 calories.
+</p>
+<p class="answer">
+Skinny jeans are a global conspiracy to make men empathetic. We men don't identify enough with the sacrifices women endure to look attractive. The demoralizing diets, suffocating bras, painful heels. Society even normalizes the notion that natural faces of women are unacceptable; they should wear masks everyday in the form of makeup. These different expectations present hurdles in the race of life, slowing women down while we men breeze by in the adjacent lane wearing baggy, ever so comfortable sweatpants.
+</p>
+<p class="answer">
+Women everywhere got fed up and hopped onto Google Plus (because no one uses it) and hatched a diabolical plan to share the pain. To make us understand.
+</p>
+<p class="answer">
+Man bras are next. They will promise fuller and more shapely pectoral muscles but feel as comfortable as a boa constrictor wrapped around the chest. Rumor is mras may drop next winter. (If you're part of the Skinny Jean Illuminati, please please please don't make this happen. We beg you.)
+</p>
+</li>
+<li id="controversy">
+<p class="question">How should society grapple with AI stereotypes?</p>
+<p class="answer">
+Treat AI for what it is: an immature technology. AI Art generators are not sage elders. They're raw technologies with the potential to empower billions of people -- but also perpetuate harmful stereotypes. Industry experts are scrambling to tame AI and erase bias, but these solutions won't materialize for a while.
+</p>
+<p class="answer">
+Meanwhile, the best way to combat stereotypes -- whether from AI, news, or TV -- is at the human layer and armed with two principles.
+</p>
+<p class="answer">
+First, no two people are identical (except <a href="https://www.elle.com/uk/life-and-culture/g24258571/best-celebrity-look-a-likes/?slide=17&source=hotpot-ai" target="_blank">Zach Braff and Dax Shepard</a>, who undeniably are the same person wearing different color contacts). As society diversifies, it becomes even more challenging to represent the staggering diversity among human groups. For instance, should a Netflix show about Chinese-Americans feature Cantonese or Mandarin? Should the food reflect Northern or Southern cuisine? (No, Panda Express is not a valid option.) The United Status Census groups Chinese, Koreans, and Japanese -- all incredibly different cultures and ethnicities -- into one mega group, "Asian."
+</p>
+<p class="answer">
+Second, anyone has the potential to become anything or do anything. Never let a lack of representation in AI, news, or TV suggest otherwise. Unless your goal is to become our boss and make us choose between french fries and ice cream. Don't do this. Don't be evil.
+</p>
+</li>
+<li>
+<p class="question">You're edgy for a tech startup. What gives?</p>
+<p class="answer">
+For realz. In the digital jungle of startups, life may swing violently between success and failure on a daily basis. One moment, you're soaring toward an IPO. The next, you're hurtling toward the trash can. The constant chaos of teetering between boom and bust is incredibly taxing and demands extreme mental fortitude. Unless you're SBF and FTX. Then it just takes $40m and a few politicans.
+</p>
+<p class="answer">
+Hotpot's toughness stems from our founder, whose difficult childhood forged a steely sense of purpose.
+</p>
+<p class="answer">
+Perhaps all you need to know is that he is the only 3x winner of the Baddest Bad Boy of the Palo Alto Chess Club. Were it not for uniminaginably painful papercuts that required hospitalization, experts agree he would have captured his fourth in unanimous fashion. Even more astounding, he was willing to risk it all, but doctors warned these papercuts were no ordinary wounds. Not only did they hamper his checkmate fingers, they were on the verge of drawing blood. He fought to soldier on, but his doctors advised immediate treatment and ended his historic run as Baddest Bad Boy.
+</p>
+<p class="answer">
+How does one develop the grit to confront papercuts? By growing up in rugged and unforgiving Palo Alto, where winter temperatures dip into the low 60s and students are often observed trudging to school in last season's Cole Haans. Where minorities may walk into a store and face greetings of, "Good afternoon!" even though it's only 11:58 AM and obviously still morning. Oh, the lies! Such deception. Like uncultured beasts, in the raw neighborhoods of Palo Alto, people pass the evenings sleeping not in silk sheets, but Egyptian cotton.
+</p>
+<p class="answer">
+Against this barbaric landscape, his parents sought to instill in him and his brothers another layer of groundedness. So he grew up braving those frigid winters wearing nothing but merino wool. No cashmere. Not the innovative machine washable type, either, but the kind savages wear that need hand washing (by maids). Monitors were scarce at home. Instead of each coding with three monitors like normal kids, the brothers were forced to share and one would - gasp! - program on a single 32" monitor.
+</p>
+<p class="answer">
+Finally, nothing builds character more than conquering starvation. Because his personal chef insisted on taking weekends off, he eventually learned to subsist on leftover caviar and lobster and by drinking flat sparkling water. He nearly vomited the first time his lips touched food older than 2 hours, but he doggedly trained his microbiome and now proudly enjoys any type of food, provided it's imported from Japan or France.
+</p>
+<p class="answer">
+Forbes recognized these amazing achievements by adding him to the exclusive Forbes 1 Billion under 1 Billion list. His next ambitious goal? To maintain a Costco membership for more than three years in a row. (Stand down, critics: everything seems easy until you try it.)
+</p>
+<p class="answer">
+<a href="https://twitter.com/panabee" target="_blank">Follow him</a> on Twitter for more breathtaking accomplishments.
+</p>
+</li>
+<li>
+<p class="question">Is it approriate to call yourself "visionary" on LinkedIn?</p>
+<p class="answer">
+No, absolutely not. It's pretentious and douchey.
+</p>
+<p class="answer">
+Unless you do it in the third person.
+</p>
+<p class="answer">
+Typically, describing yourself as visionary is a faux pas. But doing so in the third person reveals selflessness, an extraordinary willingness to step into someone else's shoes and see the world from another perspective. Such empathy offsets arrogance and renders it socially acceptable. Assuming your name is Albee Esse, the approach recommended by the UNSIHMA (United and Not Sensitive International Hall Monitor Association) is this: "I wouldn't personally call myself visionary, but in the interest of truth, most people do describe Albee Esse as a visionary who awes people with humility and genius."
+</p>
+<p class="answer">
+However, please exercise caution. The bar for visionaries is higher than ever.
+</p>
+<p class="answer">
+If it's 8 PM and you boldly proclaim that in 8 minutes all watches will suddenly show 8:08, do not expect others to be impressed and ask for a photo. If you're at Starbucks and foretell that some stranger will yell your name without warning and hand you a hot beverage, do not expect hearty applause and cheers of, "Wow! Amazing! Encore!" If you do this too many times, do not expect people to appreciate your genius but rather expect a meeting with the Starbucks shift manager who will politely ask you to leave and never come back. Finally, if you prophesize that sprinting out of restaurants without paying would cause waiters to shout angrily and call the police, this is no longer hailed as "seeing the future" but instead treated as "breaking the law."
+</p>
+<p class="answer">
+Remember every strength is a weakness. If you're more attuned to the future, you are likely less attuned to the present. Your mind may be so future-oriented that in the present moment you fail to realize that the woman mouthing and gesturing to you is not saying, "You handsome hunk, may I have your autograph and several beads of sweat to sell on eBay for 8 trillion dollars?" but rather, "Your zipper is undone, and everyone can see your Spider-Man underwear. Also why is a grown man wearing Spider-Man underwear? Grown men should wear Ironman underwear."
+</p>
+</li>
+<li>
+<p class="question">If your homeboy Confucius were alive today, would he still be a philosopher?</p>
+<p class="answer">
+Nope. Not practical. Modern philosophers are poor. They need to choose between french fries and salted caramel ice cream when dining out. And that would trigger an avalanche of unhealthy philosophizing about why they majored in a subject that can't support bare essentials like salted caramel ice cream.
+</p>
+<p class="answer">
+Then what ... poet? Physicist? Reality TV star? All reasonable guesses, but all wrong. Confucius would be a rapper.
+</p>
+<p class="answer">
+He would be the Chinese version of Biggie. Think about it. Confucius naturally meets many rapper prerequisities: tons of groupies (they were called concubines back then); poor English grammar; excessive jewelry; just obese enough to be relatable to average Americans but not so obese as to die of heart complications and end a lucrative career; and, of course, inspiring people with words. All he needs are a few gold teeth, a pimped out ride, and a stupid-smart name like con.fu.zius. Instant stardom.
+</p>
+</li>
+<li>
+<p class="question">OMG, you're racist. You disparaged 1 billion people.</p>
+<p class="answer">
+By the Chris-Rock/black-comedian principle, we're authorized by the UNSIHMA (United and Not Sensitive International Hall Monitor Association) to mock Chinese people, and sometimes Mongolians, without upsetting anyone since we're Chinese-Americans ourselves.
+</p>
+<p class="answer">
+And by the how-to-survive-life principle, we respectfully suggest not getting offended by corporate FAQs from startups named after Chinese food. Who names an AI company after food?
+</p>
+<p class="answer">
+That said, we're delighted you take us seriously. Because none of our friends and family do. They straight up ignore us every day, potentially because we do dumb things like naming an AI company after food. Nonetheless, it hurts deeply when we chase after them screaming, "Hey, can we hang out? Can we get lunch? Can you stop running so fast?" and they look at us with horrified faces before summoning the powers of Usain Bolt and sprinting away like human cheetahs.
+</p>
+<p class="answer">
+Don't take us seriously.
+</p>
+</li>
+<li>
+<p class="question">You're still racist. I'm upset. Comfort me.</p>
+<p class="answer">
+Anti-Asian discrimination and prejudice are real threats facing society. We use satire to highlight the issue while hopefully sparking discussion and introspection. Most people don't enjoy sanctimony pie, but humor can act as a tactful vehicle for awareness and contemplation.
+</p>
+<p class="answer">
+Not to mention, corporate FAQs are dreadfully boring, so please pardon the desire to indulge in humor and irreverence.
+</p>
+<p class="answer">
+If you want to learn more about anti-Asian discrimination, here are troubling facts: Chinese people were legally barred from immigrating to America, declared "inferior" by courts and government offices, and denied many basic rights, including even the ability to testify in court. The Chinese Exclusion Act, which was the first law to ban an ethic group, remains one of the most shameful episodes in American history.
+</p>
+<p class="answer">
+What motivated the abominable Chinese Exclusion Act? People were fearful of surrendering jobs to Chinese immigrants. The parallels to AI fearmongering today are eerie and worrisome.
+</p>
+</li>
+<li>
+<p class="question">If AI takes your job, what will you do?</p>
+<p class="answer">
+We will emulate our idol, the inimitable, Derek Zoolander, and transition from engineers into male models.
+</p>
+<p class="answer">
+In preparation, we have spent weekends religiously practicing our ability to ambiturn, that is turning left and right with equal grace. We're supremely gifted at turning right, but left has been challenging. Nonetheless, we are approaching our stretch goal of turning left 88 times without getting dizzy or stopping for ice cream. Wish us luck.
+</p>
+<p class="answer">
+But we're not content to smash ambiturning records. We want to marry our love of technology and fashion, and aim to disrupt the industry as AI-powered mullet models. We will flaunt mullets with revolutionary design and unprecedented thoughtfulness to the user experience. Our patent-pending technology will feature self-aware technology embedded into every hair strand that can read minds and morph on demand. Want to see mullets in the shape of a dog balloon animal? Just think it. Want a dog balloon in the front and a Bad Bad Chess Boy in the back? Done. Yes, you read correctly: dual-shaped mullets. We do not think small at Hotpot.
+</p>
+</li>
+<li>
+<p class="question">How come Chinese people can mock white people, but white people can't mock Chinese people?</p>
+<p class="answer">
+It's unfair to be honest. It's racist when white people mock minorities, but "funny" when minorities mock white people. (There is a reasonable explanation for this double standard, but let's punt for now since race is a highly charged topic that defies objective analysis even among unbiased thinkers, and we're just an AI company named after food no one takes seriously.)
+</p>
+<p class="answer">
+At the same time, white people did make us build railroads for free. Even worse, you are responsible for Barry Manilow, mullets, Priceline Negotiator ads, and debasing the 1980s Transformers cartoon series. Let's call it even.
+</p>
+<p class="answer">
+To reiterate, this is satire. Please don't take offense. Racism is wrong. Toward anyone. Moreover, no one should be punished for transgressions committed by their ancestors. Why double standards exist is a separate, profoundly complex topic unfit for satirical FAQs.
+</p>
+</li>
+<li>
+<p class="question">Can you promote my art or NFT?</p>
+<p class="answer">
+Yes. Please tag us on <a href="https://twitter.com/hotpothelper" target="_blank">Twitter</a> and <a href="https://www.instagram.com/hotpot.ai/" target="_blank">Instagram</a> if you want to show off your awesome Hotpot creations.
+</p>
+<p class="answer">
+We love promoting people with compelling stories and cool art who collaborated with Hotpot. Tag us, share details about your background, your work, and how Hotpot helped. We'll do our best to amplify your story on social media and with reporters.
+</p>
+</li>
+<li>
+<p class="question">I'm on a budget. Can you offer a discount?</p>
+<p class="answer">Yes, <a href="/contact" target="_blank">contact us</a>. Our <a href="/pricing" target="_blank">pricing philosophy</a> is to help the poor and charge the rich.</p>
+</li>
+</ul>
+</article>
+<article>
+<h2>Research Credit</h2>
+<p>
+Hotpot builds on and is informed by many machine learning papers and projects. <a href="/machine-learning-credits" target="_blank">See here</a> for attributions.
+</p>
+</article>
+</div>
+<div id="templateBox" style="display:none">
+<div class="resultBox">
+<div class="statusBox">
+<div class="stageBox active"> <div class="icon"></div> </div>
+<div class="adBox upgradeText">
+<p> <a href="#" class="button" onclick="didClickCreditCheckoutButton()">Use Premium</a> </p>
+<div class="upgradeGrid">
+<div class="featureName wide">&nbsp;</div>
+<div class="planName">Free</div>
+<div class="planName">Premium</div>
+<div class="cell featureName wide">Wait time*</div>
+<div class="cell">
+<div>20 seconds</div>
+<div class="featureName narrow">Wait time*</div>
+</div>
+<div class="cell">
+<div>5 seconds</div>
+<div class="featureName narrow">Wait time*</div>
+</div>
+<div class="cell featureName wide">Daily limit</div>
+<div class="cell">
+<div><span class="numRequests">1</span> &nbsp;of&nbsp; <span class="maxRequests">2</span></div>
+<div class="featureName narrow">Daily limit</div></div>
+<div class="cell">
+<div>Unlimited</div>
+<div class="featureName narrow">Daily limit</div>
+</div>
+<div class="cell featureName wide">Commercial use</div>
+<div class="cell">
+<div class="icon no"></div>
+<div class="featureName narrow">Commercial use</div>
+</div>
+<div class="cell">
+<div class="icon yes"></div>
+<div class="featureName narrow">Commercial use</div>
+</div>
+<div class="cell featureName wide">Best quality</div>
+<div class="cell">
+<div class="icon no"></div>
+<div class="featureName narrow">Best quality</div>
+</div>
+<div class="cell">
+<div class="icon yes"></div>
+<div class="featureName narrow">Best quality</div>
+</div>
+<div class="cell featureName wide">Private images</div>
+<div class="cell">
+<div class="icon no"></div>
+<div class="featureName narrow">Private images</div>
+</div>
+<div class="cell">
+<div class="icon yes"></div>
+<div class="featureName narrow">Private images</div>
+</div>
+<div class="cell featureName wide">No ads</div>
+<div class="cell">
+<div class="icon no"></div>
+<div class="featureName narrow">No ads</div>
+</div>
+<div class="cell">
+<div class="icon yes"></div>
+<div class="featureName narrow">No ads</div>
+</div>
+</div>
+<p style="display:none"> <a href="#" class="button" onclick="didClickCreditCheckoutButton()">Upgrade</a> </p>
+<a class="crossSellBox" href="/ai-headshots" target="_blank">
+<div class="text">Turn selfies into amazing AI headshots and AI avatars</div>
+<img src="/images/site/ai/headshot_maker/teaser.jpg" loading="lazy">
+</a>
+</div>
+</div>
+<div class="imageBox targetBox" style="display:none">
+<img src="/images/site/transparent.gif">
+</div>
+<div class="actionBox">
+<div class="description"> A fire sword in the style of pixel art. </div>
+<div class="style"></div>
+<div class="requestIdBox" style="display:none"> ID: <span class="requestId"></span> </div>
+<div class="errorBox" style="display:none"> Error: <span class="message"></span> </div>
+<div class="linkBox" style="display:none">
+<div class="button resize" title="Enlarge or change size">AI Resize</div>
+<div class="button edit" title="Edit with AI">AI Edit</div>
+<div class="button download" title="Download image"></div>
+<div class="button share" title="Share image"></div>
+</div>
+<div class="upgradeBox" style="display:none">
+<div class="link text upgrade">Buy credits for commercial use*, better images, privacy, and more benefits</div>
+</div>
+<div class="underageWarningBox" style="display:none">
+<div>Note: we scan underage content for safety. This warning does not mean the image is illegal. If the image depicts a child inappropriately and was by mistake, please delete the image and use language like "man," "woman," or "in 20s" to avoid triggering our filter. If this was intentional, we will alert authorities.</div>
+</div>
+</div>
+</div>
+<div class="styleBox">
+<div class="thumbnailBox">
+<img src="/images/site/transparent.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="rootGallery">
+<div class="body">
+<div class="title"> Explore More </div>
+<div class="cellListBox">
+<a href="/ai-corporate-headshot" class="cellBox">
+<img src="/images
+/teaser_400.jpg" loading="lazy" alt="AI Corporate Headshots: elevate LinkedIn photos, company websites, and other business profiles with professional headshots">
+<div class="label">AI Corporate Headshots</div>
+</a>
+<a href="/art-generator" class="cellBox">
+<img src="/images/site/ai/image_generator/art_maker/teaser_400.jpg" loading="lazy" alt="AI Art Generator: turn text to art with AI. Generate images with AI using only text.">
+<div class="label">AI Art Generator</div>
+</a>
+<a href="/ai-headshots" class="cellBox">
+<img src="/images/site/ai/headshot_maker/teaser_400.jpg" loading="lazy" alt="AI Headshot Generator: reimagine yourself with AI. Create headshots and glamour shots of yourself in any style or scene imaginable.">
+<div class="label">AI Headshots</div>
+</a>
+<a href="/remove-object" class="cellBox">
+<img src="/images/teaser_400.jpg" loading="lazy" alt="Remove people, animals, tree, and other objects with AI. Use our AI to edit and clean up pictures in seconds.">
+<div class="label">Remove Objects With AI</div>
+</a>
+<a href="/logo-generator" class="cellBox">
+<img src="images/teaser_400.jpg" loading="lazy" alt="Create amazing logo ideas with AI text-to-image technology. See ideas in multiple styles: flat, detailed, hipster, black & white, and more.">
+<div class="label">AI Logo Generator</div>
+</a>
+<a href="/tools" class="cellBox">
+<img src="/images/site/ai/restorer/teaser_400.jpg" loading="lazy" alt="Remove background, enlarge picture, AI art, and other AI image tools.">
+<div class="label">AI Image Tools</div>
+</a>
+<a href="/ai-image-generator" class="cellBox" style="display:none">
+<img src="/images/site/footerGallery/mobile_400.jpg" loading="lazy" alt="AI image generator: free and no login required">
+<div class="label">AI Image Generator</div>
+</a>
+<a href="/colorize-picture" class="cellBox">
+<img src="/images/site/ai/colorizer/teaser_400.jpg" loading="lazy" alt="Colorize photos with AI">
+<div class="label">Colorize Photos With AI</div>
+</a>
+<a href="/upscale-photo" class="cellBox">
+<img src="/images/site/ai/supersizer/teaser_400.jpg" loading="lazy" alt="Upscale photos, art, game assets, and other graphics with incredible quality. Our photo upscaler uses AI to increase image resolution and optimizes for people, products, and art.">
+<div class="label">Upscale AI Images 10x</div>
+</a>
+<a href="/remove-background" class="cellBox">
+<img src="/images/site/ai/background_remover/teaser_400.jpg" loading="lazy" alt="Removing the background from images is easy with Hotpot. Use our AI to remove backgrounds in seconds">
+<div class="label">Remove Backgrounds</div>
+</a>
+</div>
+</div>
+</div>
+<footer id="rootFooter">
+<div class="top"></div>
+<div class="body">
+<div class="calloutBox">
+<div class="logoBox">
+<img class="brandmark" src="/images/logos/brandmark.svg" alt="Hotpot.ai brandmark">
+<img class="wordmark" src="/images/logos/wordmark.svg" alt="Hotpot.ai wordmark">
+</div>
+<div class="links">
+<a href="/pricing">Pricing</a>
+<a href="/help">Help</a>
+<a href="/contact">Contact</a>
+<a href="/blog/ai-thoughts">AI Misinformation</a>
+</div>
+</div>
+<div class="section general">
+<div class="navGroup">
+<div class="title">AI Images</div>
+<div class="grid">
+<a href="/docs/api" class="leaf">Hotpot API</a>
+<a href="/ai-image-generator" class="leaf">AI Image Generator</a>
+<a href="/art-generator" class="leaf">AI Art Generator</a>
+<a href="/ai-headshots" class="leaf">AI Headshots</a>
+<a href="/ai-stock-photo" class="item">AI Stock Photos</a>
+<a href="/upscale-photo" class="leaf">AI Photo Upscaler</a>
+<a href="/remove-object" class="leaf">AI Object Remover</a>
+<a href="/remove-background" class="leaf">AI Background Remover</a>
+<a href="/personalize-art" class="leaf">AI Art Personalizer</a>
+<a href="/anime-generator">AI Anime Generator</a>
+<a href="/restore-picture" class="leaf">AI Picture Restorer</a>
+<a href="/enhance-face" class="leaf">AI Face Enhancer</a>
+<a href="/colorize-picture" class="leaf">AI Picture Colorizer</a>
+<a href="/logo-generator">AI Logo Generator</a>
+</div>
+</div>
+<div class="navGroup">
+<div class="title">Resources</div>
+<div class="grid">
+<a href="/game-tools" class="leaf">AI Game Tools</a>
+<a href="/ai-avatar">AI Avatars</a>
+<a href="/profile-picture-editor">AI Profile Picture Editor</a>
+<a href="/ai-character" class="item">AI Character Generator</a>
+<a href="/background-generator" class="leaf">AI Background Generator</a>
+<a href="/free-game-assets" class="desktop">Free Game Assets</a>
+<a href="/app-marketing-pack" class="leaf">App Marketing Pack</a>
+<a href="/nft-generator" class="leaf">NFT Generator</a>
+<a href="/free-icons">Free Icons</a>
+<a href="/icon-resizer">Icon Resizer</a>
+<a href="/gallery/8/ai-art-maker" class="leaf">AI Art Gallery</a>
+<a href="/color-generator" class="leaf">AI Color Generator</a>
+<a href="/stable-diffusion" class="leaf">Stable Diffusion</a>
+<a href="/stable-diffusion-api" class="leaf">Stable Diffusion API</a>
+</div>
+</div>
+<div class="navGroup">
+<div class="title">Blog</div>
+<div class="grid">
+<a href="/blog/ai-art-and-image-generator-guide">Generating Images With AI</a>
+<a href="/chatgpt">ChatGPT</a>
+<a href="/blog/app-store-screenshot-sizes">App Store Screenshot Sizes</a>
+<a href="/blog/app-icon-generator">App Icon Generator</a>
+<a href="/blog/how-to-make-app-store-screenshots">Make App Store Screenshots</a>
+<a href="/blog/how-to-make-app-store-panorama-screenshots">Make Panorama Screenshots</a>
+<a href="https://www.panabee.com/business-name-generator?s=hotpot">Business Name Generator</a>
+<a href="https://www.panabee.com/app-name-generator?s=hotpot">App Name Generator</a>
+<a href="/app-store-screenshot-generator">App Store Screenshot Generator</a>
+<a href="/dalle-mini" class="leaf">Dall-E Mini Alternative</a>
+<a href="/dalle-2" class="leaf">Dall-E 2 Alternative</a>
+<a href="/blog/translate-json">Translate JSON files</a>
+</div>
+</div>
+<div class="navGroup">
+<div class="title">Templates</div>
+<div class="grid">
+<a href="/templates/instagram-post" class="leaf">Instagram Post</a>
+<a href="/templates/instagram-story" class="leaf">Instagram Story</a>
+<a href="/templates/facebook-cover" class="leaf">Facebook Cover</a>
+<a href="/templates/facebook-post" class="leaf">Facebook Post</a>
+<a href="/templates/linkedin-banner" class="leaf">LinkedIn Banner</a>
+<a href="/templates/youtube-thumbnail" class="leaf">YouTube Thumbnails</a>
+<a href="/templates/youtube-banner" class="leaf">YouTube Banners</a>
+<a href="/templates/game-asset" class="leaf">Game Asset</a>
+<a href="/game-asset-generator" class="leaf">Game Background</a>
+<a href="/templates/splash-screen" class="leaf">Wallpaper</a>
+<a href="/dnd-generator">AI DnD Generator</a>
+<a href="/templates/app-store-icon" class="leaf">App Store Icon</a>
+<a href="/templates/background" class="leaf">Background</a>
+</div>
+</div>
+</div>
+<div class="footerDivider"></div>
+<div class="copyright">
+<a href="/about">About</a>
+<a href="/jobs">Jobs</a>
+<a href="/privacy">Privacy</a>
+<a href="/credits">Credits</a>
+<div class="rights">© 2024 Panabee, LLC. All rights reserved.</div>
+</div>
+</div>
+</footer>
+
+<script>
+	  	"use strict";
+
+	  	function loadDriftWidget() {
+	  		var t = window.driftt = window.drift = window.driftt || [];
+
+	  		if (!t.init) {
+	  			if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+	  			t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+	  			t.factory = function(e) {
+	  				return function() {
+	  					var n = Array.prototype.slice.call(arguments);
+	  					return n.unshift(e), t.push(n), t;
+	  				};
+	  			}, t.methods.forEach(function(e) {
+	  				t[e] = t.factory(e);
+	  			}), t.load = function(t) {
+	  				var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+	  				o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+	  				var i = document.getElementsByTagName("script")[0];
+	  				i.parentNode.insertBefore(o, i);
+	  			};
+	  		}
+
+	  		drift.SNIPPET_VERSION = '0.3.1';
+	  		drift.load('dbw4m3dzwg5e');
+
+			// Hide Drift widget by default.
+			if (window.drift) {
+			  window.drift.on('ready', function(api) {
+				//api.widget.hide();
+
+				drift.api.openChat();
+			  });
+			}
+	  	}
+
+	  	function didClickDriftButton() {
+	  		if (window.drift && drift.api) {
+	  			drift.api.openChat();
+	  		} else {
+	  			MessageClass.showMessage('This computer blocks chat support. Please email help@hotpot.ai. We reply within a few hours.');
+	  		}
+	  	}
+
+	  	// Load Drift when page is ready.
+		$(document).ready(function() {
+			if (window.location.pathname && window.location.pathname.includes('/contact')) {
+				const helpDelay = 0;
+				setTimeout(function() {
+					//loadDriftWidget();
+				}, helpDelay);
+			}
+
+
+			$('.button.help').on('click', function() {
+				// if (window.Tawk_API) {
+				// 	window.Tawk_API.toggle();
+				// } else {
+				// 	MessageClass.showMessage('Please email us. Chat unavailable.');
+				// }
+
+
+				// if (window.drift) {
+				//	didClickDriftButton();
+				// } else {
+				//	MessageClass.showMessage('Chat still loading; please try in 5 seconds');
+				// }
+
+				window.open('/contact', '_blank');
+
+
+			});
+		});
+	</script>
+
+
+<div id="cookieOverlay" style="display:none">
+<div class="message">
+We use cookies. Usage gives consent. <a href="/privacy" target="_blank">See details</a>.
+</div>
+<div class="close">
+I AGREE
+</div>
+</div>
+
+
+<script>
+		function initCookieAlert() {
+			try {
+				// Show cookie overlay?
+				if (!localStorage.getItem('seenCookieKey')) {
+					setTimeout(function() {
+						$('#cookieOverlay').show();
+					}, 1000);
+				}
+
+				// Dismiss cookie overlay on click.
+				$('#cookieOverlay .close').on('click', function() {
+					localStorage.setItem('seenCookieKey', true);
+					$('#cookieOverlay').hide();
+				});
+			} catch (e) {
+				MessageClass.showModalString('Your browser blocks cookies.\n\nEnable cookies to use website features.');
+			}
+		}
+
+
+		function initSiteMenu() {
+			SiteMenuClass.init();
+
+			// Handle taps on menu button.
+			$('#siteMenuButton').on('touchstart click', function(event) {
+				event.preventDefault();
+				SiteMenuClass.show();
+			});
+		}
+
+
+		function getReferrerId() {
+			let lsKey = Hotpot.localStorageKeys.referrerId;
+			let paramName = Hotpot.urlParameters.referrerId;
+
+			let referrerId = getUrlParameter(paramName);
+			if (referrerId) {
+				localStorage.setItem(lsKey, referrerId);
+				debug('Found referrer ID: ' + referrerId);
+			}
+		}
+
+
+		$(document).ready(function() {
+			initCookieAlert();
+
+			initSiteMenu();
+
+			getReferrerId();
+		});
+	</script>
+
+
+
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8b79d6fbfe41e626',t:'MTcyNDQwMjg2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

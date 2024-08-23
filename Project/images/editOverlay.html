@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://hotpot.ai/components/editOverlay -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="./jquery.min-56a981c8f3080b80f66fcf27c928c1670f0434681478a3fdf46606110390da81.js.download"></script>
+<script src="./application-5efd6ee9fd64803bc2fb2878dfe8afcce9d78cd2956ae1a6a4b0e20b655e04a5.js.download"></script>
+
+<link rel="stylesheet" media="screen" href="./reset-05c44cf8428909649f0fc1436c3efe551a61163501a75f8f0103b768b3cd2596.css">
+<link rel="stylesheet" media="screen" href="./scaffold-e2db533b6a07d648f846ee22f316a6452ae94b3176a984015442d98730d944b6.css">
+
+<link href="./css2" rel="stylesheet">
+
+<meta name="robots" content="noindex">
+</head>
+<body>
+<style>
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// Body
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+html, body {
+	background: rgba(0, 0, 0, 0);
+}
+
+
+body.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// RootOverlay
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+#rootOverlay {
+	background: transparent;
+	height: 100vh;
+	z-index: 0;
+}
+
+
+#rootOverlay.dark {
+	background: rgba(0, 0, 0, 0.6);
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// RootBox
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+#rootBox {
+	position: fixed;
+	top: 60px;
+	left: 10px;
+	display: flex;
+	justify-content: center;
+   box-sizing: border-box;
+   max-height: 95vh;
+	padding: 30px;
+	background: #FCFCFC;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(8, 8, 8, 0.28);
+	overflow: auto;
+	z-index: 8;
+}
+
+
+#rootBox.centered {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// General
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+h2 {
+	padding: 0;
+   margin: 0 0 8px;
+	font-family: Roboto;
+   font-size: 15px;
+   font-weight: normal;
+}
+
+
+a {
+	color: #6DADE0;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+</style>
+<div id="rootOverlay" class="overlay"></div>
+<div id="rootBox">
+<style>
+
+
+#rootBox {
+	padding: 40px;
+}
+
+
+#controlBox {
+	width: auto;
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+
+#controlBox .button {
+	display: flex;
+	width: 100%;
+	height: 35px;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+	opacity: 0.8;
+	padding-left: 40px;
+	margin-bottom: 2px;
+	background-size: 20px;
+	background-position: left center;
+	background-repeat: no-repeat;
+	transition: 0.5s ease;
+	background-color: transparent;
+	color: #7C7A7D;
+}
+
+
+#controlBox .button {
+	font-size: 14px;
+}
+
+
+#controlBox .button:hover {
+   opacity: 1;
+}
+
+
+#controlBox .button.download {
+	background-image: url(/images/ai_editor/icons/download.svg);
+}
+
+#controlBox .button.share {
+	background-image: url(/images/site/icons/share.svg);
+}
+
+#controlBox .button.erase {
+    background-image: url(/images/ai_editor/icons/erase.svg);
+}
+
+#controlBox .button.replace {
+    background-image: url(/images/ai_editor/icons/replace.svg);
+}
+
+#controlBox .button.fixFace {
+    background-image: url(/images/ai_editor/icons/fix_face.svg);
+}
+
+#controlBox .button.enlarge {
+    background-image: url(/images/ai_editor/icons/enlarge.svg);
+}
+
+#controlBox .button.nft {
+    background-image: url(/images/ai_editor/icons/collection.svg);
+}
+
+#controlBox .button.remix {
+    background-image: url(/images/ai_editor/icons/reuse_style.svg);
+}
+
+#controlBox .button.changeStyle {
+    background-image: url(/images/ai_editor/icons/change_style.svg);
+}
+
+#controlBox .button.textToImage {
+    background-image: url(/images/ai_editor/icons/create.svg);
+}
+
+#controlBox .button.crop {
+    background-image: url(/images/ai_editor/icons/crop.svg);
+}
+
+#controlBox .button.addText,
+#controlBox .button.imageToStory {
+	background-image: url(/images/ai_editor/icons/add_text.svg);
+	background-size: 18px;
+}
+
+#controlBox .button.editBackground {
+    background-image: url(/images/ai_editor/icons/change_style.svg);
+}
+
+
+#controlBox .button.addBackground {
+    background-image: url(/images/ai_editor/icons/create.svg);
+}
+
+
+.tabBox {
+	display: flex;
+	gap: 40px;
+	margin-bottom: 20px;
+}
+
+
+.tabBox .tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 45px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+
+.tabBox .tab:hover,
+.tabBox .tab.selected {
+	background: #6DADE0;
+	color: #FFF;
+}
+
+
+.tabBox .tab:hover {
+	background: #206194;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+// Mobile
+//////////////////////////////////////////////////////////////////////////////////////////////// */
+@media screen and (max-width : 600px) {
+
+}
+
+</style>
+<div id="controlBox">
+<div class="tabBox">
+<div class="tab edit selected" data-tabid="edit">AI Edit</div>
+<div class="tab create" data-tabid="create">AI Create</div>
+</div>
+<div class="buttonListBox edit">
+<div class="button enlarge">AI Resize</div>
+<div class="button erase">AI Erase/Replace</div>
+<div class="button editBackground">AI Remove Background</div>
+<div class="button fixFace">AI Enhance Face</div>
+<div class="button addText">Add Text</div>
+<div class="button replace">AI Edit Profile</div>
+<div class="button crop">Auto Crop</div>
+<div class="button addBackground" style="display:none">Add Background</div>
+</div>
+<div class="buttonListBox create">
+<div class="button textToImage">Create AI Image</div>
+<div class="button remix">Remix AI Image</div>
+<div class="button nft">Create Collection</div>
+<div class="button imageToStory">Image to Story</div>
+<div class="button changeStyle" style="display:none">Change Style</div>
+</div>
+</div>
+<script>
+
+// ================================================================================
+// Globals
+// ================================================================================
+let FireEvents = true;
+let LogCategoryName = 'Edit Overlay';
+
+const DefaultArtMakerSettings = {
+	text: 'Happy Hotpot',
+}
+
+let ImageUrl = 'https://hotpotmedia.s3.us-east-2.amazonaws.com/8-LjVVmvTz3bzKL6y.png?nc=1';
+let ArtMakerSettings = {};
+let Settings = {};
+
+// ================================================================================
+// Inter-Frame Functions
+// ================================================================================
+// TODO: set @LogId from caller.
+function configure(settings) {
+	Settings = settings;
+	ImageUrl = settings.imageUrl;
+	ArtMakerSettings = settings.artMakerSettings;
+
+	if (!ArtMakerSettings) {
+		ArtMakerSettings = DefaultArtMakerSettings;
+	}
+
+	// TODO: Show/hide Art Maker settings based on text.
+
+	// Decide which tab to show.
+	const tabClass = settings.modeIndex === 1 ? 'create' : 'edit';
+	didClickTab(ControlBox.find(`.tabBox .tab.${tabClass}`));
+}
+
+
+function enlarge() {
+	didClickEnlargeButton();
+}
+
+
+function addBackground() {
+	didClickAddBackgroundButton();
+}
+
+// TODO: clean up naming for this and @addBackground.
+function replaceBackground() {
+	didClickReplaceButton();
+}
+
+
+function initTabBox() {
+	ControlBox.find('.tabBox .tab').on('click', function() {
+		didClickTab($(this));
+	});
+}
+
+
+function initControlBox() {
+	// Handle clicks on enlarge button.
+	ControlBox.find('.button.enlarge').on('click', function() {
+		didClickEnlargeButton();
+	});
+
+	// Handle clicks on erase button.
+	ControlBox.find('.button.erase').on('click', function() {
+		didClickEraseButton();
+	});
+
+	// Handle clicks on replace button.
+	ControlBox.find('.button.replace').on('click', function() {
+		didClickReplaceButton();
+	});
+
+	// Handle clicks on fix face button.
+	ControlBox.find('.button.fixFace').on('click', function() {
+		didClickFixFaceButton();
+	});
+
+	// Handle clicks on personalize button.
+	ControlBox.find('.button.personalize').on('click', function() {
+		didClickPersonalizeButton();
+	});
+
+	// Handle clicks on remix button.
+	ControlBox.find('.button.remix').on('click', function() {
+		didClickRemixButton();
+	});
+
+	// Handle clicks on reuse style link.
+	ControlBox.find('.button.changeStyle').on('click', function() {
+		didClickChangeStyleButton();
+	});
+
+	// Handle clicks on reuse style link.
+	ControlBox.find('.button.textToImage').on('click', function() {
+		didClickTextToImageButton();
+	});
+
+	// Handle clicks on add text link.
+	ControlBox.find('.button.addText').on('click', function() {
+		didClickAddTextButton();
+	});
+
+	// Handle clicks on add text link.
+	ControlBox.find('.button.addBackground').on('click', function() {
+		didClickAddBackgroundButton();
+	});
+
+	// Handle clicks on edit background link.
+	ControlBox.find('.button.editBackground').on('click', function() {
+		didClickEditBackgroundButton();
+	});
+
+	// Handle clicks on sell NFT link.
+	ControlBox.find('.button.nft').on('click', function() {
+		didClickNftButton();
+	});
+
+	// Handle clicks on image to story button.
+	ControlBox.find('.button.imageToStory').on('click', function() {
+		didClickImageToStoryButton();
+	});
+
+	// Handle clicks on auto crop button.
+	ControlBox.find('.button.crop').on('click', function() {
+		didClickCropButton();
+	});
+}
+
+
+// ================================================================================
+// Add Text Functions
+// ================================================================================
+// Ugh. Hackenstein!!!
+// Gets invoked by Graphic Editor.
+function getDesignInitData() {
+	return CopyDesignInitData;
+}
+
+
+async function didClickAddTextButton() {
+	// Create image list for new graphic.
+	let imageList = [
+	{
+		dataUrl: ImageUrl,
+		itemId: null
+	}
+	];
+
+	// TODO: change this! Use blobs and transfer blobs. No more globals and reaching back into the opener. Gross.
+	// Save @imageList in @CopyDesignInitData, which gets called by the Graphic Editor.
+	CopyDesignInitData = {
+		imageList: imageList
+	};
+
+	// Open blank design.
+	window.open('/design/blank?id=1&s=edit-overlay', '_blank');
+
+	// Log event.
+	logEvent(LogCategoryName,
+		'Add text button clicked');
+}
+
+
+async function didClickAddBackgroundButton() {
+	// Create image list for new graphic.
+	let imageList = [
+		{
+			dataUrl: ImageUrl,
+			itemId: null
+		}
+	];
+
+	// TODO: change this! Use blobs and transfer blobs. No more globals and reaching back into the opener. Gross.
+	// Save @imageList in @CopyDesignInitData, which gets called by the Graphic Editor.
+   CopyDesignInitData = {
+   	imageList: imageList
+   };
+
+	// Open blank design.
+	window.open('/design/blank?id=1&s=edit-overlay', '_blank');
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Add background button clicked');
+}
+
+
+// ================================================================================
+// Tab Functions
+// ================================================================================
+function didClickTab(tabElement) {
+	ControlBox.find('.tabBox .tab').removeClass('selected');
+	tabElement.addClass('selected');
+
+	const tabId = tabElement.attr('data-tabId');
+	ControlBox.find('.buttonListBox').hide();
+	ControlBox.find(`.buttonListBox.${tabId}`).show();
+}
+
+
+// ================================================================================
+// Editing Functions
+// ================================================================================
+function didClickTextToImageButton() {
+	let hotpotUrl = '/art-generator';
+
+	// Copy @ArtMakerSettings then delete @imageUrl from copy, but not original object.
+	const settings = JSON.parse(JSON.stringify(ArtMakerSettings));
+	delete settings.imageUrl;
+
+	openHotpotUrl(hotpotUrl, settings);
+
+	logEvent(LogCategoryName,
+				'Create AI image button clicked');
+}
+
+
+function didClickRemixButton() {
+	const hotpotUrl = '/art-generator';
+
+	if (!ArtMakerSettings.imageUrl) {
+		ArtMakerSettings.imageUrl = ImageUrl;
+	}
+
+	openHotpotUrl(hotpotUrl, ArtMakerSettings);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Remix AI image button clicked');
+}
+
+
+// TODO: must implement
+function didClickNftButton() {
+	let hotpotUrl = '/ai-image-collection';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	logEvent(LogCategoryName,
+				'Collection button clicked');
+}
+
+
+function didClickImageToStoryButton() {
+	let hotpotUrl = '/sparkwriter';
+
+	const settings = {
+		serviceId: 'storyGenerator',
+		input: ArtMakerSettings.text
+	}
+
+	openHotpotUrl(hotpotUrl, settings);
+
+	logEvent(LogCategoryName,
+				'Image To Story button clicked');
+}
+
+
+function didClickEraseButton() {
+	let hotpotUrl = '/remove-object';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Erase button clicked');
+}
+
+
+function didClickReplaceButton() {
+	const hotpotUrl = '/profile-picture-editor';
+
+	const paramList = {
+		mode: 'replace',
+		imageUrl: ImageUrl,
+		imageType: 'png',
+		s: 'edit-overlay',
+		isTransparent: Settings.isTransparent
+	}
+
+	openHotpotUrl(hotpotUrl, paramList);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Replace button clicked');
+}
+
+
+function didClickCropButton() {
+	const hotpotUrl = '/crop-photo';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Crop button clicked');
+}
+
+
+function didClickEnlargeButton() {
+	let hotpotUrl = '/upscale-photo';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Enlarge button clicked');
+}
+
+
+function didClickEditBackgroundButton() {
+	let hotpotUrl = '/remove-background';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Edit background button clicked');
+}
+
+
+function didClickFixFaceButton() {
+	let hotpotUrl = '/enhance-face';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Fix Face button clicked');
+}
+
+
+function didClickPersonalizeButton() {
+	let hotpotUrl = '/personalize-art';
+
+	openHotpotSimpleHelper(hotpotUrl);
+
+	// Log event.
+	logEvent(LogCategoryName,
+				'Personalize button clicked');
+}
+
+
+
+function openHotpotSimpleHelper(hotpotUrl) {
+	openHotpotImageHelper(hotpotUrl, ImageUrl, 'edit-overlay');
+}
+
+
+
+
+
+
+function didClickMakeArtButton() {
+	let url = '/art-generator';
+
+	openHotpotUrl(url);
+
+	logEvent(LogCategoryName,
+				'Made art button clicked');
+}
+
+
+function didClickMakeNftButton() {
+	let url = '/nft-generator';
+
+	openHotpotUrl(url);
+
+	logEvent(LogCategoryName,
+				'Made NFT button clicked');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ================================================================================
+// Keyboard Event Functions
+// ================================================================================
+function initKeyboardEvents() {
+   $(document).keydown(function(event) {
+	   // Esc pressed?
+	   if (event.keyCode === 27) {
+			OverlayClass.hideOverlay();
+
+ 		// Propagate to parent? Let parent process keys we don't.
+	   } else if (parent && parent.previewBoxDidKeyboardEvent) {
+			parent.previewBoxDidKeyboardEvent(event);
+
+      }
+   });
+}
+
+
+// ================================================================================
+// Global Functions
+// ================================================================================
+function initGlobals() {
+	ControlBox = $('#controlBox');
+}
+
+
+// ================================================================================
+// Document Ready Event Handler
+// ================================================================================
+$(document).ready(function() {
+	// Init globals.
+	initGlobals();
+
+	initTabBox();
+
+	initControlBox();
+
+	initKeyboardEvents();
+
+	// Print status.
+	debug('Edit overlay document ready end');
+});
+
+</script>
+</div>
+<script>
+
+
+// ================================================================================
+// OverlayClass
+// ================================================================================
+let OverlayClass = (function() {
+   "use strict";
+
+
+   // ================================================================================
+   // Constants
+   // ================================================================================
+   const DefaultShowDur = 200;
+   const DefaultHideDur = 200;
+   const DefaultXOffset = 10;
+   const DefaultYOffset = 10;
+
+   // ================================================================================
+   // Global Variables
+   // ================================================================================
+
+
+   // ================================================================================
+   // Functions
+   // ================================================================================
+	function init() {
+		$('#rootOverlay').on('click', function() {
+			hideOverlay(0);
+		});
+	}
+
+
+	function positionContent(anchorXParam, anchorYParam, anchorWidthParam, anchorHeightParam) {
+		// Set anchor points, ensure they are valid numbers.
+		let anchorX = anchorXParam ? anchorXParam : 0;
+		let anchorY = anchorYParam ? anchorYParam : 0;
+		let anchorWidth = anchorWidthParam ? anchorWidthParam : 0;
+		let anchorHeight = anchorHeightParam ? anchorHeightParam : 0;
+
+		// Default content position to be below anchor point.
+		let newX = anchorX + DefaultXOffset;
+		let newY = anchorY + anchorHeight + DefaultYOffset;
+
+		// Set default max-height value.
+		let maxHeight = 'none';
+
+		// Set content box.
+		let contentBox = $('#rootBox');
+
+      // Set window and content values.
+      let contentHeight = contentBox.outerHeight();
+      let windowWidth = $(window).width();
+      let windowHeight = $(window).height();
+
+		// If insufficient space below, can we place content above anchor point?
+		if (newY + contentHeight > windowHeight) {
+			// Update <newY>.
+ 			newY = anchorY - DefaultYOffset - contentHeight;
+
+ 			// Insufficient space above anchor point? Position content near window top.
+ 			if (newY < DefaultYOffset || (newY + contentHeight > windowHeight)) {
+ 				// Set <newY>.
+ 				newY = DefaultYOffset;
+
+ 				// Update <maxHeight>.
+ 				maxHeight = windowHeight - 2*DefaultYOffset;
+ 			}
+ 		}
+
+ 		// Set content properties.
+ 		contentBox.offset({left: newX, top: newY});
+ 		contentBox.css('max-height', maxHeight + 'px');
+	}
+
+
+	function showOverlayBySettings() {
+		showOverlay();
+
+	 	let maxWidth = $(window).width() - 2*DefaultXOffset;
+	 	let maxHeight = $(window).height() - 2*DefaultYOffset;
+
+		let contentBox = $('#rootBox');
+		contentBox.css('position', 'static');
+		contentBox.css('max-height', maxHeight + 'px');
+		contentBox.css('max-width', maxWidth + 'px');
+
+		//if (contentBox.outerWidth() > $(window).width() ||
+		//	contentBox.outerHeight() > $(window).height()) {
+			contentBox.css('overflow', 'auto');
+		//}
+
+		$('body').addClass('center');
+		$('#rootOverlay').addClass('dark');
+	}
+
+
+	function showOverlay() {
+		// Get iframe element holding overlay.
+		let iframeElement = $(window.frameElement);
+
+		// Set duration.
+		let dur = DefaultShowDur;
+
+		// Show overlay.
+		iframeElement.fadeIn(dur);
+
+		// Given content focus.
+		$('#rootBox').focus();
+	}
+
+
+	function hideOverlay(durParam) {
+		// Get iframe element holding overlay.
+		const iframeElement = $(window.frameElement);
+
+		// Set duration.
+		const dur = isDefined(durParam) ? durParam : DefaultHideDur;
+
+		// Notify iframe of close event.
+		const contentWindow = iframeElement[0].contentWindow;
+		if (contentWindow && contentWindow.overlayClassWillCloseOverlay) {
+			contentWindow.overlayClassWillCloseOverlay();
+		}
+
+		// Show overlay.
+		iframeElement.fadeOut(dur);
+	}
+
+
+	function configure(settings) {
+		if (settings.background) {
+			$('#rootOverlay').css('background', settings.background);
+		}
+	}
+
+
+   // ================================================================================
+   // API
+   // ================================================================================
+   return {
+      init: init,
+      configure: configure,
+      hideOverlay: hideOverlay,
+      showOverlay: showOverlay,
+      showOverlayBySettings: showOverlayBySettings,
+      positionContent: positionContent
+   };
+})();
+
+
+// ================================================================================
+// Component Layout Ready Event Handler
+// ================================================================================
+$(document).ready(function() {
+	OverlayClass.init();
+});
+
+
+function positionContent(anchorX, anchorY, anchorWidth, anchorHeight) {
+	OverlayClass.positionContent(anchorX, anchorY, anchorWidth, anchorHeight);
+}
+
+
+function hideOverlay(dur) {
+	OverlayClass.hideOverlay(dur);
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlay() {
+	OverlayClass.showOverlay();
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayBySettings(settings) {
+	OverlayClass.showOverlayBySettings(settings);
+}
+
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayFull(settings) {
+	OverlayClass.showOverlay();
+	OverlayClass.configure(settings);
+}
+
+// TODO: refactor confusing showOverlay functions!!!
+function showOverlayBySettingsNEW(settings) {
+	// Show overlay.
+	OverlayClass.showOverlay();
+	OverlayClass.configure(settings);
+
+	// Set content box.
+	let contentBox = $('#rootBox');
+
+	const isCentered = isDefined(settings.centered) && settings.centered;
+	contentBox.toggleClass('centered', isCentered);
+
+
+
+	// TODO: Fix this hacky stuff. Please. It's so embarrassing. Why is it required???
+	// Reset width value.
+	if (settings.width) {
+		contentBox.css('width', settings.width);
+	} else {
+		//contentBox.css('width', 'auto');
+	}
+
+	if (settings.maxWidth) {
+		contentBox.css('max-width', settings.maxWidth);
+	}
+
+
+
+	if (settings.centered) {
+		let overflowCSS = contentBox.prop('scrollHeight') > contentBox.height() ? 'auto' : 'visible';
+		contentBox.css('overflow', overflowCSS);
+
+		if (settings.widthPercentage) {
+			contentBox.css('width', settings.widthPercentage + '%');
+		}
+
+	} else {
+		OverlayClass.positionContent(settings.anchorX, settings.anchorY, settings.anchorWidth, settings.anchorHeight);
+	}
+}
+
+
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8b79d7022e37b2cc',t:'MTcyNDQwMjg2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource(3).html"></iframe>
+
+</body></html>
