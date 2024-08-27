@@ -934,61 +934,9 @@ I AGREE
 </div>
 
 
-<script>
-		function initCookieAlert() {
-			try {
-				// Show cookie overlay?
-				if (!localStorage.getItem('seenCookieKey')) {
-					setTimeout(function() {
-						$('#cookieOverlay').show();
-					}, 1000);
-				}
-
-				// Dismiss cookie overlay on click.
-				$('#cookieOverlay .close').on('click', function() {
-					localStorage.setItem('seenCookieKey', true);
-					$('#cookieOverlay').hide();
-				});
-			} catch (e) {
-				MessageClass.showModalString('Your browser blocks cookies.\n\nEnable cookies to use website features.');
-			}
-		}
-
-
-		function initSiteMenu() {
-			SiteMenuClass.init();
-
-			// Handle taps on menu button.
-			$('#siteMenuButton').on('touchstart click', function(event) {
-				event.preventDefault();
-				SiteMenuClass.show();
-			});
-		}
-
-
-		function getReferrerId() {
-			let lsKey = Hotpot.localStorageKeys.referrerId;
-			let paramName = Hotpot.urlParameters.referrerId;
-
-			let referrerId = getUrlParameter(paramName);
-			if (referrerId) {
-				localStorage.setItem(lsKey, referrerId);
-				debug('Found referrer ID: ' + referrerId);
-			}
-		}
-
-
-		$(document).ready(function() {
-			initCookieAlert();
-
-			initSiteMenu();
-
-			getReferrerId();
-		});
-	</script>
 
 
 
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8b79d6fbfe41e626',t:'MTcyNDQwMjg2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>

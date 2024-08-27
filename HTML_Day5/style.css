@@ -1,0 +1,40 @@
+*
+{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+nav{
+  background-color: black;
+  height: 60px;
+}
+ 
+#carousel
+{
+  width: 100%;
+  background-color: aquamarine;
+  padding: 50px;
+}
+
+#category-bar
+{
+  background-color: rgb(49, 49, 47);
+  height: 40px;
+}
+#cards-parent
+{
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+}
+
+.card
+{
+  border: 1px solid green;
+  background-color: yellowgreen;
+  flex-basis: 100%;
+  flex-grow: 1;
+  width: 20vw;
+  height: 200px;
+  padding: 5px;
+}
