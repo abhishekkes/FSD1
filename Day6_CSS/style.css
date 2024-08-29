@@ -1,0 +1,137 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* .parent
+{
+  border: 1px solid grey;
+  height: 200px;
+  width: 200px;
+}
+
+.child
+{
+  border: 1px solid blue;
+  height: 60px;
+  width: 60px;
+}
+
+.c2
+{
+  position: relative;
+  right: -60px;
+}
+
+.c3 
+{
+  position: relative;
+  left: 60px;
+} */
+
+/* 
+
+.parent
+{
+  border: 1px solid grey;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+body
+{
+  height: 300vw;
+}
+
+.child
+{
+  position: relative;
+  border: 1px solid blue;
+  height: 60px;
+  width: 60px;
+}
+
+.c2
+{
+  position: relative;
+  top: -0;
+}
+
+.c3 
+{
+  position: fixed;
+  right: 2px;
+  top: 0;
+} */
+
+
+
+.parent
+{
+  border: 1px solid grey;
+  background-color: yellow;
+  height: 200vw;
+}
+
+/* .child
+{
+  position: sticky;
+  top: 10px;
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: black;
+} */
+/* 
+div
+{
+  height: auto;
+  width: 50vw;
+  margin: auto;
+  background-color: yellow;
+}
+
+@media(width <=768px)
+{
+div{
+background-color: green;
+width: 90vw;
+padding: 2px;
+font-size: 1rem;
+}
+  
+} */
+
+.ball
+{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  position: absolute;
+  background-color: blueviolet;
+  animation: circular 5s;
+  animation-fill-mode: forwards;
+  clip-path: circle(20)
+}
+@keyframes circular
+{
+  from{
+    left: 0px;
+  }
+  to 
+  {
+    left: 900px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
