@@ -201,3 +201,17 @@ color: #233266;
   font-weight: bold;
   float: left;
 }
+
+#footer
+{
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  
+}
+#footer .item1
+{
+  align-self: center;
+
+  font-size: 20px;
+}
