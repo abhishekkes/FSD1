@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Form Example</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <!-- Form with three fields: Name, Email, Password -->
+    <form id="userForm">
+        <!-- Name field -->
+        <label for="name">Name:</label>
+        <input onkeyup="keyupfunc(event)" type="text" id="name" name="name" required>
+        <br><br>
+
+        <!-- Email field -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <!-- Password field -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+
+        <!-- Reset button -->
+        <button type="reset">Reset</button>
+    </form>
+
+</body>
+</html>
