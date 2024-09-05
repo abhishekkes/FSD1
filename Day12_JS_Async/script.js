@@ -53,14 +53,19 @@ async function fetchdata() {
  const params=document.getElementById('txt').value; 
   const pr=await fetch('https://api.github.com/users?per_page='+params);
   const users=await pr.json();  
-   users.forEach(user =>{
-    console.log(user);
+   users.forEach(userdata =>{
+    const user= document.createElement('div');
+    user.setAttribute("class",'user');
     const img = document.createElement('img');
-   
-    img.src = user.avatar_url;
-    img.alt = user.login;
+    const h4= document.createElement('h4');
+    
+    
+    img.src = userdata.avatar_url;
+    img.title = userdata.login;
+    h4.textContent=userdata.login;
       
-    userContainer.appendChild(img);
+    user.append(img,h4);
+    userContainer.append(user);
     
 });
 
